@@ -22,6 +22,7 @@ body{
 
 @media screen and (max-width: 500px){
   .info_mes{
+    visibility: hidden;
     display: none;
   }
 }
