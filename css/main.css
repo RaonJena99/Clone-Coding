@@ -77,10 +77,15 @@ main{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fe6f0f;
+  background-color: rgb(254, 111, 15);
   border-radius: 20px;
   color: white;
   font-size: 13px;
   font-weight: bold;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+}
+
+.write:hover{
+  background-color: rgba(254, 111, 15, 0.8);
 }
