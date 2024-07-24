@@ -17,14 +17,11 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
-  visibility: hidden;
   background-color: coral;
 }
 
-@media screen and (min-width: 500px){
+@media screen and (max-width: 500px){
   .info_mes{
-    visibility: visible;
-    opacity: 1;
+    display: none;
   }
 }
