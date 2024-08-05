@@ -1,0 +1,60 @@
+/* 하단바 */
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  border-top: 1px solid #dedbde;
+  padding-bottom: 10px;
+  background-color: white;
+}
+
+.footer-block{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px 10px 15px;
+  font-size: 12px;
+}
+
+.footer-block div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+}
+
+.footer-block img{
+  width: 25px;
+  height: 25px;
+  margin-bottom: 4px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+@keyframes img-moving{
+  0%{
+    transform: translateY(0px);
+  }
+  50%{
+    transform: translateY(-10px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
+
+.home:hover #img1{
+  animation: 1.5s img-moving infinite;
+}
+.life:hover #img2{
+  animation: 1.5s img-moving infinite;
+}
+.around:hover #img3{
+  animation: 1.5s img-moving infinite;
+}
+.chatting:hover #img4{
+  animation: 1.5s img-moving infinite;
+}
+.my:hover #img5{
+  animation: 1.5s img-moving infinite;
+}
