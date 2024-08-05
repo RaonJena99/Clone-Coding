@@ -10,13 +10,8 @@ body {
     sans-serif;
 }
 
-<<<<<<< HEAD:css/style.css
-.info_mes{
-  position: fixed;
-=======
 .info_mes {
-  position: absolute;
->>>>>>> master:frontend/css/style.css
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -27,14 +22,8 @@ body {
   background-color: coral;
 }
 
-<<<<<<< HEAD:css/style.css
-@media screen and (max-width: 500px){
-  .info_mes{
-    display: none;
-=======
-@media screen and (min-width: 500px) {
+@media screen and (max-width: 500px) {
   .info_mes {
-    opacity: 1;
->>>>>>> master:frontend/css/style.css
+    display: none;
   }
 }
