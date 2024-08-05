@@ -9,10 +9,10 @@ async function handleSubmitForm(event) {
       method: "POST",
       body,
     });
-    const data = res.json();
+    const data = await res.json();
     if (data === "200") window.location.pathname = "/";
   } catch (e) {
-    console.error(e);
+    console.error("에러가 발생했습니다.");
   }
 }
 

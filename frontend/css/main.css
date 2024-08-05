@@ -90,6 +90,7 @@ main {
 
 .write a {
   text-decoration: none;
+  color: white;
 }
 
 .write:hover {

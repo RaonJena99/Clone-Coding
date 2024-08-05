@@ -21,6 +21,7 @@ footer {
   align-items: center;
   width: 45px;
   height: 45px;
+  cursor: pointer;
 }
 
 .footer-block img {
