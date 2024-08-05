@@ -1,0 +1,40 @@
+@import "reset.css";
+@import "header.css";
+@import "main.css";
+@import "footer.css";
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
+}
+
+<<<<<<< HEAD:css/style.css
+.info_mes{
+  position: fixed;
+=======
+.info_mes {
+  position: absolute;
+>>>>>>> master:frontend/css/style.css
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: coral;
+}
+
+<<<<<<< HEAD:css/style.css
+@media screen and (max-width: 500px){
+  .info_mes{
+    display: none;
+=======
+@media screen and (min-width: 500px) {
+  .info_mes {
+    opacity: 1;
+>>>>>>> master:frontend/css/style.css
+  }
+}
