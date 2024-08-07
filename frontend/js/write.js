@@ -1,4 +1,5 @@
 const form = document.getElementById("write-form");
+const upload = document.getElementById("image");
 
 async function handleSubmitForm(event) {
   event.preventDefault();
@@ -16,4 +17,24 @@ async function handleSubmitForm(event) {
   }
 }
 
+function createElement(e, file) {
+  const img = document.createElement("img");
+  img.setAttribute("src", e.target.result);
+  img.setAttribute("data-file", file.name);
+  return img;
+}
+
+function getImageFiles(event) {
+  const file = event.currentTarget.files[0];
+  const img_Preview = document.querySelector(".image-preview");
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const preview = createElement(e, file);
+    img_Preview.appendChild(preview);
+  };
+  reader.readAsDataURL(file);
+}
+
 form.addEventListener("submit", handleSubmitForm);
+upload.addEventListener("change", getImageFiles);
