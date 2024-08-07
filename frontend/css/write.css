@@ -99,6 +99,7 @@ input[type="number"]::-webkit-inner-spin-button {
   border: none;
   outline: none;
   box-shadow: none;
+  width: 457px;
 }
 
 .description-form {
@@ -137,6 +138,7 @@ input[type="number"]::-webkit-inner-spin-button {
   border: none;
   outline: none;
   box-shadow: none;
+  width: 457px;
 }
 
 .image-preview {
@@ -155,4 +157,10 @@ input[type="number"]::-webkit-inner-spin-button {
 .img-form {
   display: flex;
   align-items: center;
+}
+
+.exit:hover {
+  background-color: rgb(228, 224, 224);
+  cursor: pointer;
+  border-radius: 5px;
 }

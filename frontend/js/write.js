@@ -1,5 +1,6 @@
 const form = document.getElementById("write-form");
 const upload = document.getElementById("image");
+const exit = document.querySelector(".exit");
 
 async function handleSubmitForm(event) {
   event.preventDefault();
@@ -36,5 +37,10 @@ function getImageFiles(event) {
   reader.readAsDataURL(file);
 }
 
+function handleExit() {
+  window.location.pathname = "/";
+}
+
 form.addEventListener("submit", handleSubmitForm);
 upload.addEventListener("change", getImageFiles);
+exit.addEventListener("click", handleExit);
