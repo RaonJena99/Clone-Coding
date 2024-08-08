@@ -11,6 +11,8 @@ async function handleLoginForm(event) {
     body,
   });
   const data = await res.json();
+  const accessToken = data.access_token;
+  window.localStorage.setItem("token", accessToken);
 
   if (res.status === 200) {
     alert("로그인에 성공했습니다.");

@@ -1,4 +1,4 @@
-from fastapi import FastAPI,UploadFile,Form ,Response
+from fastapi import FastAPI,UploadFile,Response,Form, Depends
 from fastapi.staticfiles import StaticFiles
 from fastapi.encoders import jsonable_encoder
 from fastapi_login import LoginManager
@@ -28,11 +28,14 @@ SECRET = "secret-code"
 manager = LoginManager(SECRET,'/login')
 
 @manager.user_loader()
-def query_user(id):
+def query_user(data):
+    WHERE_STATEMENTS = f'id="{data}"' 
+    if type(data) == dict:
+        WHERE_STATEMENTS = f'''id="{data['id']}"''' 
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     user = cur.execute(f"""
-                        SELECT * FROM users WHERE id='{id}'
+                        SELECT * FROM users WHERE {WHERE_STATEMENTS}
                         """).fetchone()
     return user
 
@@ -48,9 +51,11 @@ def login(
         raise InvalidCredentialsException
     
     access_token = manager.create_access_token(data={
-        'name':user['name'],
-        'email':user['email'],
-        'id':user['id']
+        'sub': {
+            'name':user['name'],
+            'email':user['email'],
+            'id':user['id']
+        }
     })
      
     return {'access_token': access_token}
@@ -76,7 +81,9 @@ async def write_item(image:UploadFile,
                price:Annotated[int,Form()],
                description:Annotated[str,Form()],
                place:Annotated[str,Form()],
-               atime:Annotated[int,Form()]):
+               atime:Annotated[int,Form()],
+               user=Depends(manager)
+               ):
     image_bytes = await image.read()
     cur.execute(f""" 
                 INSERT INTO items (title,image,price,description,place,atime)
@@ -86,7 +93,8 @@ async def write_item(image:UploadFile,
     return '200'
     
 @app.get("/items")
-async def get_items():
+async def get_items(user=Depends(manager)):
+    
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     rows = cur.execute(f"""
@@ -97,7 +105,7 @@ async def get_items():
     return JSONResponse(jsonable_encoder(dict(row) for row in rows))
 
 @app.get("/images/{item_id}")
-async def get_image(item_id):
+async def get_image(item_id,user=Depends(manager)):
     cur = con.cursor()
     image_bytes = cur.execute(f"""
                               SELECT image from items WHERE id = {item_id}
