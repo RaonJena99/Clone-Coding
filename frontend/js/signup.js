@@ -22,7 +22,8 @@ async function handleSignupForm(event) {
     });
     const data = await res.json();
     if (data === "200") {
-      alert("회원가입을 성공했습니다.");
+      alert("회원가입에 성공했습니다.");
+      window.location.pathname = "/login.html";
     }
   } else {
     alert("비밀번호가 같지 않습니다.");
