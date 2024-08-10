@@ -1,0 +1,63 @@
+/* 헤더 */
+header {
+  margin: 10px;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+}
+
+/* 상태줄 */
+.info-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px 10px 15px;
+}
+.info-bar_time {
+  font-weight: bold;
+}
+.info-bar_icons {
+  display: flex;
+  justify-content: space-between;
+  width: 68px;
+  height: 20px;
+}
+.info-bar_icons img {
+  width: 20px;
+  height: 20px;
+}
+
+/* 메뉴바 */
+.menu-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 17px 10px 17px;
+}
+.menu-bar_location {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90px;
+  height: 25px;
+}
+.menu-bar_place {
+  font-weight: bold;
+  font-size: 20px;
+  height: 25px;
+}
+.menu-bar_select {
+  height: 25px;
+}
+.menu-bar_select img {
+  height: 25px;
+  cursor: pointer;
+}
+.menu-bar_icons {
+  display: flex;
+  justify-content: space-between;
+  width: 90px;
+  height: 25px;
+}
+.menu-bar_icons img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}

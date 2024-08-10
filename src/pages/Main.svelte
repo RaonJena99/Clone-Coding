@@ -1,0 +1,83 @@
+<script>
+  let hour = new Date().getHours();
+  let minute = new Date().getMinutes();
+  setInterval(() => {
+    hour = new Date().getHours();
+    minute = new Date().getMinutes();
+  }, 1000);
+</script>
+
+<header>
+  <!-- 상태줄 -->
+  <div class="info-bar">
+    <div class="info-bar_time">{hour}:{minute}</div>
+    <div class="info-bar_icons">
+      <div class="info-bar_network">
+        <img src="assets/bar.svg" alt="netework" />
+      </div>
+      <div class="info-bar_wifi">
+        <img src="assets/wifi.svg" alt="wifi" />
+      </div>
+      <div class="info-bar_battery">
+        <img src="assets/battery.svg" alt="battery" />
+      </div>
+    </div>
+  </div>
+  <!-- 메뉴바 -->
+  <div class="menu-bar">
+    <div class="menu-bar_location">
+      <div class="menu-bar_place">역삼1동</div>
+      <div class="menu-bar_select">
+        <img src="assets/select.svg" alt="select" />
+      </div>
+    </div>
+    <div class="menu-bar_icons">
+      <div class="menu-bar_search">
+        <img src="assets/search.svg" alt="search" />
+      </div>
+      <div class="menu-bar_menu">
+        <img src="assets/menu.svg" alt="menu" />
+      </div>
+      <div class="menu-bar_alarm">
+        <img src="assets/alarm.svg" alt="alarm" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 메인 페이지 -->
+<main>
+  <div class="write">
+    <a href="write.html">+ 글쓰기</a>
+  </div>
+</main>
+
+<!-- 하단바 -->
+<footer>
+  <div class="footer-block">
+    <div class="home">
+      <img id="img1" src="assets/home.svg" alt="home" />
+      <div class="home_word">홈</div>
+    </div>
+    <div class="life">
+      <img id="img2" src="assets/life.svg" alt="life" />
+      <div class="life_word">동네생활</div>
+    </div>
+    <div class="around">
+      <img id="img3" src="assets/around.svg" alt="around" />
+      <div class="around_word">내 근처</div>
+    </div>
+    <div class="chatting">
+      <img id="img4" src="assets/chatting.svg" alt="chatting" />
+      <div class="chatting_word">채팅</div>
+    </div>
+    <div class="my">
+      <img id="img5" src="assets/my.svg" alt="my" />
+      <div class="my_word">나의 당근</div>
+    </div>
+  </div>
+</footer>
+<div class="info_mes">화면 사이즈를 줄여주세요</div>
+
+<style>
+</style>
