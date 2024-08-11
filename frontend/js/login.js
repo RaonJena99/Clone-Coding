@@ -1,4 +1,5 @@
 const form = document.getElementById("login-form");
+const signup = document.querySelector(".signup");
 
 async function handleLoginForm(event) {
   event.preventDefault();
@@ -22,4 +23,9 @@ async function handleLoginForm(event) {
   }
 }
 
+function handleSignup() {
+  window.location.pathname = "/signup.html";
+}
+
+signup.addEventListener("click", handleSignup);
 form.addEventListener("submit", handleLoginForm);

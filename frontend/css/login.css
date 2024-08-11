@@ -1,0 +1,80 @@
+.login-body {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.box {
+  margin-top: 40px;
+  width: 400px;
+  height: 300px;
+  border: 1px solid #dddada;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-txt {
+  width: 300px;
+  height: 30px;
+  font-size: large;
+  font-weight: bold;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.login-txt img {
+  width: 20px;
+  height: 20px;
+  margin-right: 7px;
+}
+
+label {
+  color: rgba(254, 111, 15, 0.8);
+  opacity: 0.7;
+  font-size: 15px;
+}
+
+#login-form {
+  width: 300px;
+}
+
+input {
+  margin: 5px 0px 5px 0px;
+  width: 295px;
+  height: 23px;
+  font-size: medium;
+  background-color: white;
+  border: 1px solid #dddada;
+  border-radius: 2px;
+  outline: none;
+}
+
+input:focus {
+  border: 1px solid #d98888;
+}
+
+.log-sign {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin: 10px 5px 0px 5px;
+  width: 144px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgba(254, 111, 15, 0.8);
+  opacity: 0.7;
+  border: 0;
+  font-size: 13px;
+}
+
+button:active {
+  background-color: rgba(241, 105, 14, 0.8);
+}

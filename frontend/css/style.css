@@ -3,6 +3,7 @@
 @import "main.css";
 @import "footer.css";
 @import "write.css";
+@import "login.css";
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
