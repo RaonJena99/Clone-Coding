@@ -4,11 +4,16 @@ const exit = document.querySelector(".exit");
 
 async function handleSubmitForm(event) {
   event.preventDefault();
+
+  const accessToken = window.localStorage.getItem("token");
   const body = new FormData(form);
   body.append("atime", new Date().getTime());
   try {
     const res = await fetch("/items", {
       method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
       body,
     });
     const data = await res.json();

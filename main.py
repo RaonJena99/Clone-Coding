@@ -57,7 +57,7 @@ def login(
             'id':user['id']
         }
     })
-     
+    
     return {'access_token': access_token}
 
 @app.post("/signup")
@@ -94,7 +94,6 @@ async def write_item(image:UploadFile,
     
 @app.get("/items")
 async def get_items(user=Depends(manager)):
-    
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     rows = cur.execute(f"""
@@ -105,7 +104,7 @@ async def get_items(user=Depends(manager)):
     return JSONResponse(jsonable_encoder(dict(row) for row in rows))
 
 @app.get("/images/{item_id}")
-async def get_image(item_id,user=Depends(manager)):
+async def get_image(item_id):
     cur = con.cursor()
     image_bytes = cur.execute(f"""
                               SELECT image from items WHERE id = {item_id}
