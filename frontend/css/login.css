@@ -33,7 +33,7 @@
   margin-right: 7px;
 }
 
-label {
+.login-label {
   color: rgba(254, 111, 15, 0.8);
   opacity: 0.7;
   font-size: 15px;
@@ -43,7 +43,7 @@ label {
   width: 300px;
 }
 
-input {
+.box input {
   margin: 5px 0px 5px 0px;
   width: 295px;
   height: 23px;
@@ -54,7 +54,7 @@ input {
   outline: none;
 }
 
-input:focus {
+.box input:focus {
   border: 1px solid #d98888;
 }
 
@@ -64,7 +64,7 @@ input:focus {
   align-items: center;
 }
 
-button {
+.log-sign button {
   margin: 10px 5px 0px 5px;
   width: 144px;
   height: 40px;
@@ -75,6 +75,6 @@ button {
   font-size: 13px;
 }
 
-button:active {
+.log-sign button:active {
   background-color: rgba(241, 105, 14, 0.8);
 }

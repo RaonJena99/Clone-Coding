@@ -1,4 +1,5 @@
 const form = document.getElementById("signup-form");
+const login = document.querySelector(".login");
 
 const checkPassword = () => {
   const body = new FormData(form);
@@ -9,7 +10,7 @@ const checkPassword = () => {
   } else return false;
 };
 
-async function handleSignupForm(event) {
+async function handleLoginForm(event) {
   event.preventDefault();
   const body = new FormData(form);
   const sha256PW = sha256(body.get("password"));
@@ -30,4 +31,10 @@ async function handleSignupForm(event) {
   }
 }
 
-form.addEventListener("submit", handleSignupForm);
+function handleLogin() {
+  window.location.pathname = "/login.html";
+}
+
+login.addEventListener("click", handleLogin);
+
+form.addEventListener("submit", handleLoginForm);
