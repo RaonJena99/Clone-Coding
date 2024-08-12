@@ -1,7 +1,35 @@
+<script>
+  let hour = new Date().getHours().toString();
+  let minute = new Date().getMinutes().toString();
+  setInterval(() => {
+    hour = new Date().getHours().toString();
+    minute = new Date().getMinutes().toString();
+  }, 1000);
+
+  import { getDatabase, ref, push } from "firebase/database";
+
+  let title;
+  let price;
+  let description;
+  let place;
+
+  function writeUserData() {
+    const db = getDatabase();
+    push(ref(db, "items/"), {
+      title,
+      price,
+      description,
+      place,
+    });
+  }
+</script>
+
 <header>
   <!-- 상태줄 -->
   <div class="info-bar">
-    <div class="info-bar_time">20:55</div>
+    <div class="info-bar_time">
+      {hour.padStart(2, "0")}:{minute.padStart(2, "0")}
+    </div>
     <div class="info-bar_icons">
       <div class="info-bar_network">
         <img src="assets/bar.svg" alt="netework" />
@@ -18,20 +46,22 @@
   <!-- 제출바 -->
   <div class="submit-bar">
     <div class="submit-bar_img">
-      <img class="exit" src="assets/x.svg" alt="" />
+      <a href="/">
+        <img class="exit" src="assets/x.svg" alt="" />
+      </a>
     </div>
     <div class="submit-bar_txt">중고거래 글쓰기</div>
   </div>
 </header>
 
-<form id="write-form">
-  <div class="img-form">
+<form id="write-form" on:submit|preventDefault={() => writeUserData()}>
+  <!-- <div class="img-form">
     <label class="label_img" for="image">
       <img src="assets/image.svg" alt="" />
     </label>
     <input type="file" id="image" name="image" />
     <div class="image-preview"></div>
-  </div>
+  </div> -->
   <div class="title-form">
     <input
       type="text"
@@ -40,6 +70,7 @@
       placeholder="제목을 적어주세요."
       size="47"
       required
+      bind:value={title}
     />
   </div>
   <div class="price-form">
@@ -49,6 +80,7 @@
       name="price"
       placeholder="₩ 가격 입력"
       required
+      bind:value={price}
     />
   </div>
   <div class="description-form">
@@ -58,6 +90,7 @@
       rows="20"
       id="description"
       placeholder="게시글 내용을 작성해주세요."
+      bind:value={description}
     ></textarea>
   </div>
   <div class="place-form">
@@ -67,6 +100,7 @@
       name="place"
       placeholder="게시글을 보여줄 동네 작성"
       required
+      bind:value={place}
     />
   </div>
   <div>

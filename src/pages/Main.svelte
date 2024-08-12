@@ -1,16 +1,18 @@
 <script>
-  let hour = new Date().getHours();
-  let minute = new Date().getMinutes();
+  let hour = new Date().getHours().toString();
+  let minute = new Date().getMinutes().toString();
   setInterval(() => {
-    hour = new Date().getHours();
-    minute = new Date().getMinutes();
+    hour = new Date().getHours().toString();
+    minute = new Date().getMinutes().toString();
   }, 1000);
 </script>
 
 <header>
   <!-- 상태줄 -->
   <div class="info-bar">
-    <div class="info-bar_time">{hour}:{minute}</div>
+    <div class="info-bar_time">
+      {hour.padStart(2, "0")}:{minute.padStart(2, "0")}
+    </div>
     <div class="info-bar_icons">
       <div class="info-bar_network">
         <img src="assets/bar.svg" alt="netework" />
@@ -48,7 +50,7 @@
 <!-- 메인 페이지 -->
 <main>
   <div class="write">
-    <a href="write.html">+ 글쓰기</a>
+    <a href="#/write">+ 글쓰기</a>
   </div>
 </main>
 
