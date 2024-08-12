@@ -124,7 +124,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .place-form {
   position: fixed;
-  bottom: 0px;
+  bottom: 70px;
   width: 100%;
   height: 30px;
   background-color: #fafafa;

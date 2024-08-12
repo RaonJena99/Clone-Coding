@@ -24,6 +24,18 @@ footer {
   cursor: pointer;
 }
 
+.footer-block button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+}
+
 .footer-block img {
   width: 25px;
   height: 25px;
@@ -44,7 +56,10 @@ footer {
   }
 }
 
-.home:hover #img1 {
+.home_block:hover #img0 {
+  animation: 1.5s img-moving infinite;
+}
+.home_block:hover #img1 {
   animation: 1.5s img-moving infinite;
 }
 .life:hover #img2 {

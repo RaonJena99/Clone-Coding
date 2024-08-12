@@ -1,4 +1,13 @@
 <script>
+  import { getDatabase, ref, push } from "firebase/database";
+  import {
+    getStorage,
+    ref as refImage,
+    uploadBytes,
+    getDownloadURL,
+  } from "firebase/storage";
+  import Footer from "../components/Footer.svelte";
+
   let hour = new Date().getHours().toString();
   let minute = new Date().getMinutes().toString();
   setInterval(() => {
@@ -6,21 +15,38 @@
     minute = new Date().getMinutes().toString();
   }, 1000);
 
-  import { getDatabase, ref, push } from "firebase/database";
-
+  let files;
   let title;
   let price;
   let description;
   let place;
 
-  function writeUserData() {
+  function writeUserData(url) {
     const db = getDatabase();
     push(ref(db, "items/"), {
       title,
       price,
       description,
       place,
+      atime: new Date().getTime(),
+      url,
     });
+    window.location.hash = "/";
+  }
+
+  async function uploadFile() {
+    const storage = getStorage();
+    const file = files[0];
+    const name = file.name;
+    const imgRef = refImage(storage, name);
+    await uploadBytes(imgRef, file);
+    const url = await getDownloadURL(imgRef);
+    return url;
+  }
+
+  async function handleSubmit() {
+    const url = await uploadFile();
+    writeUserData(url);
   }
 </script>
 
@@ -54,14 +80,15 @@
   </div>
 </header>
 
-<form id="write-form" on:submit|preventDefault={() => writeUserData()}>
-  <!-- <div class="img-form">
+<form id="write-form" on:submit|preventDefault={() => handleSubmit()}>
+  <div class="img-form">
     <label class="label_img" for="image">
       <img src="assets/image.svg" alt="" />
     </label>
-    <input type="file" id="image" name="image" />
+    <input type="file" id="image" name="image" bind:files />
     <div class="image-preview"></div>
-  </div> -->
+  </div>
+
   <div class="title-form">
     <input
       type="text"
@@ -107,3 +134,5 @@
     <button type="submit" class="submit">완료</button>
   </div>
 </form>
+
+<Footer location="write"></Footer>

@@ -1,10 +1,36 @@
 <script>
+  import { getDatabase, ref, onValue } from "firebase/database";
+  import Footer from "../components/Footer.svelte";
+  import { onMount } from "svelte";
+
   let hour = new Date().getHours().toString();
   let minute = new Date().getMinutes().toString();
   setInterval(() => {
     hour = new Date().getHours().toString();
     minute = new Date().getMinutes().toString();
   }, 1000);
+
+  $: items = [];
+
+  const db = getDatabase();
+  const itemsRef = ref(db, "items/");
+  onMount(() =>
+    onValue(itemsRef, (snapshot) => {
+      const data = snapshot.val();
+      items = Object.values(data).reverse();
+    })
+  );
+
+  const calTime = (timestamp) => {
+    const curTime = new Date().getTime() - 9 * 60 * 60 * 1000;
+    const time = new Date(curTime - timestamp);
+    const hour = time.getHours();
+    const minute = time.getMinutes();
+    const second = time.getSeconds();
+    if (hour) return `${hour}시간 전`;
+    else if (minute) return `${minute}분 전`;
+    else return `${second}초 전`;
+  };
 </script>
 
 <header>
@@ -49,36 +75,35 @@
 
 <!-- 메인 페이지 -->
 <main>
+  {#each items as item}
+    <div class="list-block_item">
+      <div class="list-block_img">
+        <img src={item.url} alt="" />
+      </div>
+      <div class="index">
+        <div class="describe">
+          <div class="list-block_name">{item.title}</div>
+          <div class="list-block_register">
+            {item.place} • {calTime(item.atime)}
+          </div>
+          <div class="list-block_price">{item.price}</div>
+        </div>
+        <div class="alarm">
+          <img src="assets/chatting.svg" alt="" />
+          <div>0</div>
+          <img src="assets/heart.svg" alt="" />
+          <div>0</div>
+        </div>
+      </div>
+    </div>
+  {/each}
   <div class="write">
     <a href="#/write">+ 글쓰기</a>
   </div>
 </main>
 
-<!-- 하단바 -->
-<footer>
-  <div class="footer-block">
-    <div class="home">
-      <img id="img1" src="assets/home.svg" alt="home" />
-      <div class="home_word">홈</div>
-    </div>
-    <div class="life">
-      <img id="img2" src="assets/life.svg" alt="life" />
-      <div class="life_word">동네생활</div>
-    </div>
-    <div class="around">
-      <img id="img3" src="assets/around.svg" alt="around" />
-      <div class="around_word">내 근처</div>
-    </div>
-    <div class="chatting">
-      <img id="img4" src="assets/chatting.svg" alt="chatting" />
-      <div class="chatting_word">채팅</div>
-    </div>
-    <div class="my">
-      <img id="img5" src="assets/my.svg" alt="my" />
-      <div class="my_word">나의 당근</div>
-    </div>
-  </div>
-</footer>
+<Footer location="home"></Footer>
+
 <div class="info_mes">화면 사이즈를 줄여주세요</div>
 
 <style>
