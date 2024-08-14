@@ -14,13 +14,14 @@ main {
 .list-block_img {
   width: 130px;
   height: 130px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   margin-right: 20px;
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1px;
 }
 
 .list-block_img img {

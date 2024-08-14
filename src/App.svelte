@@ -3,29 +3,54 @@
   import Login from "./pages/Login.svelte";
   import Write from "./pages/Write.svelte";
   import Signup from "./pages/Signup.svelte";
+  import Loading from "./pages/Loading.svelte";
+  import Mypage from "./pages/Mypage.svelte";
   import Notfound from "./pages/Notfound.svelte";
   import Router from "svelte-spa-router";
+  import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithCredential,
+  } from "firebase/auth";
+  import { user$ } from "./store";
+  import { onMount } from "svelte";
   import "./css/style.css";
-  import "./css/login.css";
-  import "./css/signup.css";
-  import { GoogleAuthProvider } from "firebase/auth";
 
-  const provider = new GoogleAuthProvider();
-  provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+  let isLoading = true;
 
-  let login = false;
+  const checkLogin = async () => {
+    const auth = getAuth();
+    const token = localStorage.getItem("token");
+    if (!token) return (isLoading = false);
+    const credential = GoogleAuthProvider.credential(null, token);
+    const result = await signInWithCredential(auth, credential);
+    const user = result.user;
+    user$.set(user);
+    isLoading = false;
+  };
 
   const routes = {
     "/": Main,
     "/write": Write,
     "/signup": Signup,
+    "/mypage": Mypage,
     "*": Notfound,
   };
+
+  const sign = {
+    "/login": Login,
+    "/signup": Signup,
+  };
+
+  onMount(() => {
+    checkLogin();
+  });
 </script>
 
-<!-- 
-{#if !login}
+{#if isLoading}
+  <Loading />
+{:else if !$user$}
   <Login />
-{:else} -->
-<Router {routes} />
-<!-- {/if} -->
+{:else}
+  <Router {routes} />
+{/if}

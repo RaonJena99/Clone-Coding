@@ -105,6 +105,3 @@
 <Footer location="home"></Footer>
 
 <div class="info_mes">화면 사이즈를 줄여주세요</div>
-
-<style>
-</style>

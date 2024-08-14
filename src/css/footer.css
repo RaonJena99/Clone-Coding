@@ -56,21 +56,6 @@ footer {
   }
 }
 
-.home_block:hover #img0 {
-  animation: 1.5s img-moving infinite;
-}
-.home_block:hover #img1 {
-  animation: 1.5s img-moving infinite;
-}
-.life:hover #img2 {
-  animation: 1.5s img-moving infinite;
-}
-.around:hover #img3 {
-  animation: 1.5s img-moving infinite;
-}
-.chatting:hover #img4 {
-  animation: 1.5s img-moving infinite;
-}
-.my:hover #img5 {
+.select_block:hover > img {
   animation: 1.5s img-moving infinite;
 }
