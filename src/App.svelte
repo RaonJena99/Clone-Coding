@@ -6,14 +6,23 @@
   import Notfound from "./pages/Notfound.svelte";
   import Router from "svelte-spa-router";
   import "./css/style.css";
+  import { GoogleAuthProvider } from "firebase/auth";
+
+  const provider = new GoogleAuthProvider();
+  provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+
+  let login = false;
 
   const routes = {
     "/": Main,
-    "/login": Login,
     "/write": Write,
     "/signup": Signup,
     "*": Notfound,
   };
 </script>
 
-<Router {routes} />
+{#if !login}
+  <Login />
+{:else}
+  <Router {routes} />
+{/if}
