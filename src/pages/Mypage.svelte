@@ -3,7 +3,7 @@
 
   const logout = () => {
     localStorage.removeItem("token");
-    location.reload(true);
+    location.reload();
   };
 </script>
 

@@ -29,18 +29,20 @@
     isLoading = false;
   };
 
-  const routes = {
+  const main = {
     "/": Main,
     "/write": Write,
-    "/signup": Signup,
     "/mypage": Mypage,
     "*": Notfound,
   };
 
   const sign = {
-    "/login": Login,
+    "/mypage": Login,
     "/signup": Signup,
+    "*": Notfound,
   };
+
+  $: routes = $user$ ? main : sign;
 
   onMount(() => {
     checkLogin();
@@ -49,8 +51,6 @@
 
 {#if isLoading}
   <Loading />
-{:else if !$user$}
-  <Login />
 {:else}
   <Router {routes} />
 {/if}

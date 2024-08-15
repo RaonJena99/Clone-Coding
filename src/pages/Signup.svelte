@@ -33,7 +33,7 @@
           <button type="submit">회원가입하기</button>
         </div>
         <div>
-          <a href="/">
+          <a href="/#/mypage">
             <button type="button" class="login">로그인하러 가기</button>
           </a>
         </div>

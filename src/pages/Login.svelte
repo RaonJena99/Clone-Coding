@@ -13,6 +13,7 @@
       const user = result.user;
       user$.set(user);
       window.localStorage.setItem("token", token);
+      location.reload();
     } catch (error) {
       console.error(error);
     }
