@@ -241,6 +241,7 @@
     padding: 1px;
     background-color: white;
     border: 0.05px solid rgb(182, 182, 182);
+    cursor: pointer;
   }
 
   .camera img {

@@ -18,10 +18,12 @@
   const calTime = (timestamp) => {
     const curTime = new Date().getTime() - 9 * 60 * 60 * 1000;
     const time = new Date(curTime - timestamp);
+    const day = time.getDay();
     const hour = time.getHours();
     const minute = time.getMinutes();
     const second = time.getSeconds();
-    if (hour) return `${hour}시간 전`;
+    if (day) return `${day}일 전`;
+    else if (hour) return `${hour}시간 전`;
     else if (minute) return `${minute}분 전`;
     else return `${second}초 전`;
   };

@@ -16,11 +16,30 @@
     minute = new Date().getMinutes().toString();
   }, 1000);
 
-  let files;
+  let input;
   let title;
   let price;
   let description;
   let place;
+  let image;
+  let showImage = false;
+
+  const Preview = () => {
+    const file = input.files[0];
+    if (file) {
+      showImage = true;
+
+      const reader = new FileReader();
+      reader.addEventListener("load", function () {
+        image.setAttribute("src", reader.result);
+      });
+      reader.readAsDataURL(file);
+      console.log(reader);
+
+      return;
+    }
+    showImage = false;
+  };
 
   function writeUserData(url) {
     const db = getDatabase();
@@ -37,7 +56,7 @@
 
   async function uploadFile() {
     const storage = getStorage();
-    const file = files[0];
+    const file = input[0];
     const name = file.name;
     const imgRef = refImage(storage, name);
     await uploadBytes(imgRef, file);
@@ -70,8 +89,20 @@
     <label class="label_img" for="image">
       <img src="assets/image.svg" alt="" />
     </label>
-    <input type="file" id="image" name="image" bind:files />
-    <div class="image-preview"></div>
+    <input
+      type="file"
+      id="image"
+      name="image"
+      bind:this={input}
+      on:change={Preview}
+    />
+    <div class="image-preview">
+      {#if showImage}
+        <img bind:this={image} src="" alt="Preview" />
+      {:else}
+        <div></div>
+      {/if}
+    </div>
   </div>
 
   <div class="title-form">
@@ -121,3 +152,12 @@
 </form>
 
 <Footer location="write"></Footer>
+
+<style>
+  .image-preview {
+    width: 70px;
+  }
+  .image-preview img {
+    width: 100%;
+  }
+</style>
