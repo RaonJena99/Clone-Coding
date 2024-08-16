@@ -79,6 +79,10 @@
   </div>
 </div>
 
+<div class="camera">
+  <img src="assets/camera.svg" alt="" />
+</div>
+
 <Footer location="mypage"></Footer>
 
 <style>
@@ -125,7 +129,7 @@
     justify-content: center;
     align-items: center;
     padding: 1px;
-    border: 1px solid #777777;
+    border: 1px solid rgb(182, 182, 182);
     border-radius: 50%;
   }
 
@@ -226,5 +230,21 @@
     padding: 10px;
     margin-bottom: 10px;
     background-color: rgba(254, 111, 15, 0.2);
+    cursor: pointer;
+  }
+
+  .camera {
+    position: fixed;
+    top: 21%;
+    left: 13%;
+    border-radius: 50%;
+    padding: 1px;
+    background-color: white;
+    border: 0.05px solid rgb(182, 182, 182);
+  }
+
+  .camera img {
+    width: 20px;
+    opacity: 0.5;
   }
 </style>
