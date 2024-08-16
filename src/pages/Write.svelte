@@ -7,6 +7,7 @@
     getDownloadURL,
   } from "firebase/storage";
   import Footer from "../components/Footer.svelte";
+  import Header from "../components/Header.svelte";
 
   let hour = new Date().getHours().toString();
   let minute = new Date().getMinutes().toString();
@@ -51,23 +52,7 @@
 </script>
 
 <header>
-  <!-- 상태줄 -->
-  <div class="info-bar">
-    <div class="info-bar_time">
-      {hour.padStart(2, "0")}:{minute.padStart(2, "0")}
-    </div>
-    <div class="info-bar_icons">
-      <div class="info-bar_network">
-        <img src="assets/bar.svg" alt="netework" />
-      </div>
-      <div class="info-bar_wifi">
-        <img src="assets/wifi.svg" alt="wifi" />
-      </div>
-      <div class="info-bar_battery">
-        <img src="assets/battery.svg" alt="battery" />
-      </div>
-    </div>
-  </div>
+  <Header></Header>
 
   <!-- 제출바 -->
   <div class="submit-bar">
