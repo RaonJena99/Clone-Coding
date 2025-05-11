@@ -3,3 +3,4 @@
 .vite/deps/package.json
 dist/assets/index-3AEhIMT7.css
 dist/assets/index-CJMAysLg.js
+.DS_Store
